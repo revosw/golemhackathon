@@ -1,17 +1,13 @@
-import { getSelfMetadata } from "golem:api/host@0.2.0";
-import {UserproxyApi} from "./generated/userproxy.js"
-// import { PostApi } from "golem:post-stub/stub-post"
+import { UserproxyApi } from "./generated/userproxy.js"
 import * as cfg from "../../lib/cfg.js"
-// import { UserApi } from "golem:user-stub/stub-user";
-
-let username = "";
-const followers: string[] = [];
-const following: string[] = [];
-const posts: string[] = [];
+import { UserApi } from "golem:user-stub/stub-user";
 
 export const userproxyApi: UserproxyApi = {
     
-    addFollower(userid: string) {
-        // followers.push(userid)
+    addFollower(followee: string, follower: string) {
+        // The user being followed
+        const followeeWorker = new UserApi(cfg.getUserWorkerURN(followee))
+
+        followeeWorker.blockingAddFollower(follower)
     },
 }

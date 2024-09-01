@@ -1,8 +1,10 @@
-import { getSelfMetadata } from "golem:api/host@0.2.0";
+import { getSelfMetadata,  } from "golem:api/host@0.2.0";
+import { WasmRpc } from "golem:rpc/types@0.1.0";
 import {UserApi as UserApiType} from "./generated/user.js"
-// import { PostApi } from "golem:post-stub/stub-post"
+import { PostApi } from "golem:post-stub/stub-post"
 import * as cfg from "../../lib/cfg.js"
-// import { } from "golem:"
+import { UserproxyApi } from "golem:userproxy-stub/stub-userproxy"
+import { randomUUID } from "crypto";
 
 let username = "";
 const followers: string[] = [];
@@ -25,9 +27,9 @@ export const userApi: UserApiType = {
 
         // Add myself as a follower to the other user to make the
         // "who is following me" query much more scalable
-        const workerName = getSelfMetadata().workerId.workerName;
-        // const otherUser = new UserproxyApi(cfg.getUserWorkerURN(workerName))
-        // otherUser.blockingAddFollower(workerName)
+        const myselfId = getSelfMetadata().workerId.workerName;
+        const proxy = new UserproxyApi(cfg.getUserproxyWorkerURN())
+        proxy.blockingAddFollower(userid, myselfId)
     },
     addFollower(userid: string) {
         followers.push(userid)
@@ -40,4 +42,9 @@ export const userApi: UserApiType = {
 
         return []
     },
+    newPost() {
+        const postId = randomUUID()
+        new WasmRpc({})
+        const newPost = new PostApi({ value: postId })
+    }
 }

@@ -49,7 +49,7 @@ world user {
 
   // Project Component dependencies
   import golem:post-stub/stub-post;
-  // import golem:userproxy-stub/stub-userproxy;
+  import golem:userproxy-stub/stub-userproxy;
 
   export user-api;
 }

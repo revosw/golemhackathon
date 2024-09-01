@@ -38,7 +38,7 @@ world post {
   import wasi:sockets/instance-network@0.2.0;
 
   // Project Component dependencies
-  // 
+  
 
   export post-api;
 }

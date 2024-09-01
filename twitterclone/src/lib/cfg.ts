@@ -40,8 +40,8 @@ export function getUserWorkerURN(workerName: string): Uri {
     return {value: getComponentWorkerURN(mustGetEnv(envVarKeys.USER_COMPONENT_ID), workerName)};
 }
 
-export function getUserproxyWorkerURN(workerName: string): Uri {
-    return {value: getComponentWorkerURN(mustGetEnv(envVarKeys.USER_COMPONENT_ID), workerName)};
+export function getUserproxyWorkerURN(): Uri {
+    return {value: getComponentWorkerURN(mustGetEnv(envVarKeys.USER_COMPONENT_ID), "userproxy")};
 }
 
 export function getPostWorkerURN(workerName: string): Uri {

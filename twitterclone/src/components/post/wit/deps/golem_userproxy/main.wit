@@ -1,18 +1,12 @@
-package golem:post;
+package golem:userproxy;
 
-interface post-api {
-    record post {
-        username: string,
-        content: string,
-        posted: string,
-        likes: u32,
-    }
+// See https://component-model.bytecodealliance.org/design/wit.html for more details about the WIT syntax
 
-    new-post: func(username: string, content: string);
-    get-post: func() -> post;
+interface userproxy-api {
+  add-follower: func(followee: string, follower: string);
 }
 
-world post {
+world userproxy  {
   // Golem dependencies
   import golem:api/host@0.2.0;
   import golem:rpc/types@0.1.0;
@@ -38,7 +32,7 @@ world post {
   import wasi:sockets/instance-network@0.2.0;
 
   // Project Component dependencies
-  // 
+  
 
-  export post-api;
+  export userproxy-api;
 }
