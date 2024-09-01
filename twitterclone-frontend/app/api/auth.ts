@@ -1,11 +1,22 @@
-"use server"
+"use server";
 
-import { cookies } from "next/headers"
+import { cookies } from "next/headers";
 
 export async function login(username: string) {
-    cookies().set("username", username)
+	cookies().set("username", username);
 }
 
 export async function logout() {
-    cookies().delete("username")
+	cookies().delete("username");
+}
+
+export async function getSelf() {
+	const username = cookies().get("username")?.value;
+	if (!username) return;
+	// TODO: get profile picture
+
+	return {
+		username,
+		image: "",
+	};
 }

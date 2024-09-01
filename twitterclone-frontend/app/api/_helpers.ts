@@ -1,5 +1,3 @@
-
-
 export function postJson(body: unknown = undefined): RequestInit {
 	return {
 		body: JSON.stringify(body),

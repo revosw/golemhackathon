@@ -1,11 +1,15 @@
+import { getSelf } from "./api/auth";
+import { LoginForm } from "./components/LoginForm";
+import { LoggedIn } from "./components/LoggedIn";
 
-export default function Home() {
-    // This route is for showing your own timeline, or a login page
-  return (
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-          <div className="rounded-full h-12">
-              <button>Log in</button>
-          </div>
-    </main>
-  );
+export default async function Home() {
+	// This route is for showing your own timeline, or a login page
+    const self = await getSelf();
+    console.log(self)
+
+	return (
+		<main className="flex min-h-screen flex-col items-center justify-between p-24">
+			{self ? <LoggedIn self={self} /> : <LoginForm />}
+		</main>
+	);
 }
