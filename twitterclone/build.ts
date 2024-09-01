@@ -28,8 +28,8 @@ const componentTemplateDir = path.join("component-template", "component");
 // Defines worker to worker RPC dependencies
 const componentDependencies: Dependencies = {
     "post": ["user"],
-    "user": ["post"],
-    // "post": ["user"],
+    "user": ["post", "userproxy"],
+    "userproxy": ["user"],
 };
 
 const compNames: string[] = fs

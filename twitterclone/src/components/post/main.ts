@@ -1,5 +1,6 @@
 import { PostApi } from './generated/post.js';
 
+const userid = ""
 let username = ""
 let content = ""
 const posted = new Date()

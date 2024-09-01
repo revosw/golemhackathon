@@ -1,0 +1,25 @@
+package golem:user-stub;
+
+interface stub-user {
+  use golem:rpc/types@0.1.0.{uri as golem-rpc-uri};
+  use wasi:io/poll@0.2.0.{pollable as wasi-io-pollable};
+
+  resource future-get-timeline-result {
+    subscribe: func() -> wasi-io-pollable;
+    get: func() -> option<list<string>>;
+  }
+  resource user-api {
+    constructor(location: golem-rpc-uri);
+    blocking-follow: func(userid: string);
+    follow: func(userid: string);
+    blocking-add-follower: func(userid: string);
+    add-follower: func(userid: string);
+    blocking-get-timeline: func(userid: string) -> list<string>;
+    get-timeline: func(userid: string) -> future-get-timeline-result;
+  }
+
+}
+
+world wasm-rpc-stub-user {
+  export stub-user;
+}

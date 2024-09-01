@@ -1,0 +1,33 @@
+{
+    "id": "user-v1",
+    "draft": true,
+    "version": "0.0.1",
+    "routes": [
+      {
+        "method": "Get",
+        "path": "/{user-id}/timeline",
+        "binding": {
+          "type": "wit-worker",
+          "componentId": {
+            "componentId": "94b657f6-238f-4737-9fc3-2b25ff2f60da",
+            "version": 0
+          },
+          "workerName": "${let user: u64 = request.body.user-id; \"my-worker-${user}\" }",
+          "response": "${let result = golem:it/api.{get-cart-contents}(); {status: 200u64, body: result}}"
+        }
+      },
+      {
+        "method": "Post",
+        "path": "/{user-id}/follow",
+        "binding": {
+          "type": "wit-worker",
+          "componentId": {
+            "componentId": "94b657f6-238f-4737-9fc3-2b25ff2f60da",
+            "version": 0
+          },
+          "workerName": "${let user: u64 = request.body.user-id; \"my-worker-${user}\" }",
+          "response": "${let result = golem:it/api.{get-cart-contents}(); {status: 200u64, body: result}}"
+        }
+      }
+    ]
+   }

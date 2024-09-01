@@ -40,8 +40,7 @@ world user {
   import wasi:sockets/instance-network@0.2.0;
 
   // Project Component dependencies
-  import golem:post-stub/stub-post;
-  import golem:userproxy-stub/stub-userproxy;
+  
 
   export user-api;
 }
