@@ -1,0 +1,17 @@
+package golem:userproxy-stub;
+
+interface stub-userproxy {
+  use golem:rpc/types@0.1.0.{uri as golem-rpc-uri};
+  use wasi:io/poll@0.2.0.{pollable as wasi-io-pollable};
+
+  resource userproxy-api {
+    constructor(location: golem-rpc-uri);
+    blocking-add-follower: func(followee: string, follower: string);
+    add-follower: func(followee: string, follower: string);
+  }
+
+}
+
+world wasm-rpc-stub-userproxy {
+  export stub-userproxy;
+}

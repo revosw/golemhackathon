@@ -1,10 +1,12 @@
-package golem:user;
+package golem:userproxy;
+
+// See https://component-model.bytecodealliance.org/design/wit.html for more details about the WIT syntax
 
 interface userproxy-api {
-    addFollower(followee: string, follower: string);
+  add-follower: func(followee: string, follower: string);
 }
 
-world userproxy {
+world userproxy  {
   // Golem dependencies
   import golem:api/host@0.2.0;
   import golem:rpc/types@0.1.0;
@@ -31,7 +33,6 @@ world userproxy {
 
   // Project Component dependencies
   import golem:user-stub/stub-user;
-  import golem:post-stub/stub-post;
 
   export userproxy-api;
 }

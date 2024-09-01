@@ -1,0 +1,24 @@
+package golem:post-stub;
+
+interface stub-post {
+  use golem:rpc/types@0.1.0.{uri as golem-rpc-uri};
+  use wasi:io/poll@0.2.0.{pollable as wasi-io-pollable};
+  use golem:post/post-api.{post};
+
+  resource future-get-post-result {
+    subscribe: func() -> wasi-io-pollable;
+    get: func() -> option<post>;
+  }
+  resource post-api {
+    constructor(location: golem-rpc-uri);
+    blocking-new-post: func(username: string, content: string);
+    new-post: func(username: string, content: string);
+    blocking-get-post: func() -> post;
+    get-post: func() -> future-get-post-result;
+  }
+
+}
+
+world wasm-rpc-stub-post {
+  export stub-post;
+}

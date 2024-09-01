@@ -9,6 +9,14 @@ interface user-api {
     //     likes: u32,
     // }
 
+    record user {
+        userid: string,
+        username: string,
+        image: option<string>,
+        following: list<string>
+    }
+
+    login: func(username: string) -> user;
     follow: func(userid: string);
     add-follower: func(userid: string);
     get-timeline: func(userid: string) -> list<string>;
@@ -41,7 +49,7 @@ world user {
 
   // Project Component dependencies
   import golem:post-stub/stub-post;
-  import golem:userproxy-stub/stub-userproxy;
+  // import golem:userproxy-stub/stub-userproxy;
 
   export user-api;
 }

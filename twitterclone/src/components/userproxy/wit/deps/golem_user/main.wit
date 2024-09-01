@@ -1,18 +1,28 @@
-package golem:post;
+package golem:user;
 
-interface post-api {
-    record post {
+interface user-api {
+    // record post {
+    //     userid: string,
+    //     username: string,
+    //     content: string,
+    //     posted: string,
+    //     likes: u32,
+    // }
+
+    record user {
+        userid: string,
         username: string,
-        content: string,
-        posted: string,
-        likes: u32,
+        image: option<string>,
+        following: list<string>
     }
 
-    new-post: func(username: string, content: string);
-    get-post: func() -> post;
+    login: func(username: string) -> user;
+    follow: func(userid: string);
+    add-follower: func(userid: string);
+    get-timeline: func(userid: string) -> list<string>;
 }
 
-world post {
+world user {
   // Golem dependencies
   import golem:api/host@0.2.0;
   import golem:rpc/types@0.1.0;
@@ -38,7 +48,8 @@ world post {
   import wasi:sockets/instance-network@0.2.0;
 
   // Project Component dependencies
+  import golem:post-stub/stub-post;
   // 
 
-  export post-api;
+  export user-api;
 }

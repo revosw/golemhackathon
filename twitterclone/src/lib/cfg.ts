@@ -4,6 +4,7 @@ let env: Map<string, string> | undefined = undefined;
 
 export const envVarKeys = {
     USER_COMPONENT_ID: "urn:component:c09bde19-80f5-4786-b863-24be77ad7deb",
+    USERPROXY_COMPONENT_ID: "urn:component:c09bde19-80f5-4786-b863-24be77ad7deb",
     POST_COMPONENT_ID: "urn:component:f2859f2f-919e-43b0-b89d-3aa36a3ab172",
     // COMPONENT_THREE_ID: "COMPONENT_THREE_ID",
 }
@@ -36,6 +37,10 @@ function getComponentWorkerURN(componentID: string, workerName: string): string 
 }
 
 export function getUserWorkerURN(workerName: string): Uri {
+    return {value: getComponentWorkerURN(mustGetEnv(envVarKeys.USER_COMPONENT_ID), workerName)};
+}
+
+export function getUserproxyWorkerURN(workerName: string): Uri {
     return {value: getComponentWorkerURN(mustGetEnv(envVarKeys.USER_COMPONENT_ID), workerName)};
 }
 
