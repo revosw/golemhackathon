@@ -1,25 +1,29 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    "skipLibCheck": true,
-    "target": "ES2020",
-    "noEmit": true,
-    "lib": [
-      "ES2020"
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "compilerOptions": {
+      "skipLibCheck": true,
+      "module": "ES2022",
+      "target": "ES2022",
+      "noEmit": true,
+      "lib": [
+        "ES2022"
+      ],
+      "types": [
+        "node"
+      ],
+      "moduleResolution": "bundler",
+      "checkJs": false,
+      "strict": true,
+      "noUncheckedIndexedAccess": true,
+      "noImplicitOverride": true,
+      "noEmitOnError": true
+    },
+    "exclude": [
+      "node_modules"
     ],
-    "types": [
-      "node"
-    ],
-    "moduleResolution": "bundler",
-    "checkJs": false,
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true
-  },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "src/**/*.ts"
-  ]
-}
+    "include": [
+      "src/**/*.ts",
+      "test/**/*.ts",
+      "build.ts"
+    ]
+  }
