@@ -1,6 +1,6 @@
 {
-    "type": "module",
-"scripts": {
+  "type": "module",
+  "scripts": {
     "build": "npx tsx build.ts build",
     "updateRpcStubs": "npx tsx build.ts updateRpcStubs",
     "generateNewComponent": "npx tsx build.ts generateNewComponent",
@@ -9,17 +9,17 @@
     "test": "npx tsx test/**.test.ts",
     "clean": "npx tsx build.ts clean",
     "help": "npx tsx build.ts"
-    },
+  },
   "devDependencies": {
-    "@golemcloud/componentize-js": "0.10.5-golem.3",
-    "@golemcloud/golem-ts": "0.2.0",
-    "@golemcloud/jco": "1.4.4-golem.1",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.6",
-    "@types/node": "^20.14.2",
-    "rollup": "^4.21.2",
+    "@golemcloud/componentize-js": "0.10.5-golem.4",
+    "@golemcloud/golem-ts": "1.5.0",
+    "@golemcloud/jco": "1.4.4-golem.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/node": "^25.0.10",
+    "rollup": "^4.56.0",
     "rollup-plugin-typescript2": "^0.36.0",
-    "tslib": "^2.7.0",
-    "tsx": "^4.19.0"
+    "tslib": "^2.8.1",
+    "tsx": "^4.21.0"
   }
 }
